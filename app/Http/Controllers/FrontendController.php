@@ -81,7 +81,7 @@ class FrontendController extends Controller
     }
 
 
-    
+
     // Categories by Brand
     public function categoriesByBrand($brandUrl)
     {

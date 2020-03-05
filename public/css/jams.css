@@ -1201,3 +1201,106 @@ Btn Classes
 .components .btn{
   display: inline;
 }
+
+/* Offer Page */
+.offerPageBGC{
+  background-color: #F7F8FA;
+}
+.pageHeader{
+  background-image: linear-gradient(-45deg, #dedede, #f0f0f0, #dedede);
+  padding: 75px 0;
+}
+.pageHeader .title{
+  text-align: center;
+  text-transform: uppercase;
+}
+.pageHeaderImage .container{
+  position: relative;
+}
+.pageHeaderImage .container img{
+  width: 100%;
+  border-radius: 10px;
+}
+.pageHeaderImage .container .shortDescription{
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.offerIndexBox{
+  border: 1px solid #e0e0e0;
+  max-width: 370px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.offerIndexBox img{
+  width: 100%;
+}
+.offerIndexBox .tag{
+  background-color: #C4161C;
+  color: #fff;
+  padding: 5px 35px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 15px;
+}
+.offerProductDetails .offerPageElement{
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  -webkit-box-shadow: -5px 5px 10px -12px rgba(0,0,0,0.75);
+  -moz-box-shadow: -5px 5px 10px -12px rgba(0,0,0,0.75);
+  box-shadow: -5px 5px 10px -12px rgba(0,0,0,0.75);
+}
+.offerProductDetails .productTitle{
+  font-size: 20px;
+  font-weight: 400;
+}
+.offerProductDetails .relatedProductTitle{
+  font-size: 15px;
+  text-align: center;
+  color: #000;
+}
+
+
+
+
+/* Copied */
+.animatedGradient {
+  background-image: linear-gradient(-45deg, #C4161C, #ff6a00, #C4161C);
+  background-size: 400% 400%;
+  -webkit-animation: animatedGradient 15s ease infinite;
+  animation: animatedGradient 5s ease infinite;
+}
+@-webkit-keyframes animatedGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes animatedGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

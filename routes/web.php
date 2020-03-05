@@ -23,7 +23,6 @@ Route::post('/ajaxCartController', 'CartController@updateCart');
 
 // Temporary Route for bulk change in product
 // Route::get('/changeProductSupplier', 'ProductController@changeProductSupplier')->name('changeProductSupplier');
-
 /*
 --------------------------------------------------------------------------
  Frontend Routes
@@ -62,6 +61,14 @@ Route::post('/product/add-to-cart', 'CartController@addCartProduct')->name('addC
 Route::get('/my-shopping-cart', 'CartController@cartProductsView')->name('cartProductsView');
 Route::get('/my-shopping-cart/remove-item/{productId}', 'CartController@cartProductRemove')->name('cartProductRemove');
 
+// Offer Page
+Route::group(['namespace' => 'Frontend'], function(){
+
+  Route::get('/offer', 'OfferController@uiOfferIndex')->name('uiOfferIndex');
+  Route::get('/offer/category', 'OfferController@uiOfferCategory')->name('uiOfferCategory');
+  Route::get('/offer/prduct/details', 'OfferController@uiOfferDetails')->name('uiOfferDetails');
+
+});
 // Favorite products
 Route::post('/product/add-to-favorite', 'FrontendController@addFavoriteProduct')->name('addFavoriteProduct');
 Route::get('/my-favorite/products', 'FrontendController@favoriteProductsView')->name('favoriteProductsView');
