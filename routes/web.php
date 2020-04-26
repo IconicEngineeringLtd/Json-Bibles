@@ -23,37 +23,54 @@ Route::post('/ajaxCartController', 'CartController@updateCart');
 
 // Temporary Route for bulk change in product
 // Route::get('/changeProductSupplier', 'ProductController@changeProductSupplier')->name('changeProductSupplier');
+
 /*
 --------------------------------------------------------------------------
- Frontend Routes
+ Comon Routes
 --------------------------------------------------------------------------
 */
-Route::group(['namespace' => 'Frontend'], function()
+Route::group(['namespace' => 'Common'], function()
 {
+  // Search Products
+  Route::get('/search/{keyword?}', 'SearchController@searchResult')->name('searchResult');
+});
+
+/*
+--------------------------------------------------------------------------
+ Frontend Routes Start
+--------------------------------------------------------------------------
+*/
+Route::group(['namespace' => 'Frontend'], function(){
   // Browse Home Page
   Route::get('/', 'UiWelcomeController@welcome')->name('welcome');
-});
-// Search Products
-Route::get('/search', 'FrontendController@searchProducts')->name('searchProducts');
 
-// Browse Store Directory
-Route::get('/store-directory', 'Frontend\UiProductController@storeDirectory')->name('storeDirectory');
-// Browse Products by Category
-Route::get('/products/{categoryUrl}', 'Frontend\UiProductController@productsByCategory')->name('categoryProduct');
-// Browse Products by Sub Category
-Route::get('/products/{categoryUrl}/{subCategoryUrl}', 'FrontendController@subCategoryProduct')->name('subCategoryProduct');
+  Route::group(['namespace' => 'Product'], function(){
+    // Browse Store Directory
+    Route::get('/store-directory', 'UiProductController@storeDirectory')->name('storeDirectory');
+    // Product Filter Routes Start
+    // Browse Products by Category
+    Route::get('/products/{categoryUrl}', 'UiFilterController@productsByCategory')->name('categoryProduct');
+    // Browse Products by Sub Category
+    Route::get('/products/{categoryUrl}/{subCategoryUrl}', 'UiFilterController@subCategoryProduct')->name('subCategoryProduct');
 
-Route::group(['prefix' => 'brand'], function()
-{
-  // Browse Categories by Brand
-  Route::get('/{brandUrl}', 'FrontendController@categoriesByBrand')->name('categoriesByBrand');
-  // Browse Sub Categories by Brand & Category
-  Route::get('/{brandUrl}/{categoryUrl}/', 'FrontendController@subCategoriesByBrandCategory')->name('subCategoriesByBrandCategory');
-  // Browse Sub Categories by Brand & Category
-  Route::get('/{brandUrl}/{categoryUrl}/{subCategoryUrl}', 'FrontendController@productsByBrandCategorySubCategory')->name('productsByBrandCategorySubCategory');
+    Route::group(['prefix' => 'brand'], function(){
+      // Browse Categories by Brand
+      Route::get('/{brandUrl}', 'UiFilterController@categoriesByBrand')->name('categoriesByBrand');
+      // Browse Sub Categories by Brand & Category
+      Route::get('/{brandUrl}/{categoryUrl}/', 'UiFilterController@subCategoriesByBrandCategory')->name('subCategoriesByBrandCategory');
+      // Browse Sub Categories by Brand & Category
+      Route::get('/{brandUrl}/{categoryUrl}/{subCategoryUrl}', 'UiFilterController@productsByBrandCategorySubCategory')->name('productsByBrandCategorySubCategory');
+    });
+    // Product Filter Routes End
+    // Product Details
+    Route::get('/product/{productUrl}', 'UiProductController@productDetails')->name('product_details');
+  });
 });
-// Products
-Route::get('/product/{productUrl}', 'FrontendController@productDetails')->name('product_details');
+/*
+--------------------------------------------------------------------------
+ Frontend Routes End
+--------------------------------------------------------------------------
+*/
 
 // Action Routes //
 // Cart products

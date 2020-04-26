@@ -82,17 +82,17 @@ $(document).ready(function(){
       }],
     });
 
-  // Sticky Navbar Start
-  $(window).trigger('scroll');
-  $(window).bind('scroll', function () {
-    var pixels = 35; //number of pixels before modifying styles
-    if ($(window).scrollTop() > pixels) {
-      $('#stickyNavbar').fadeIn(0);
-    } else {
-      $('#stickyNavbar').fadeOut(0);
-    }
-  });
-  // Sticky Navbar End
+  // // Sticky Navbar Start
+  // $(window).trigger('scroll');
+  // $(window).bind('scroll', function () {
+  //   var pixels = 35; //number of pixels before modifying styles
+  //   if ($(window).scrollTop() > pixels) {
+  //     $('#stickyNavbar').fadeIn(0);
+  //   } else {
+  //     $('#stickyNavbar').fadeOut(0);
+  //   }
+  // });
+  // // Sticky Navbar End
 
   // Scroll to top start
   $(window).scroll(function(){

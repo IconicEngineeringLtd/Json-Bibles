@@ -1,4 +1,15 @@
-@extends('layouts.app')
+@extends('frontend.computer.layouts.frame')
+
+@section('metaInformations')
+  @if(isset($metaInformations))
+    <title>Search Result - {{ config('app.name') }}</title>
+    <meta name="meta_title" content="{{ $metaInformations['meta_title'] }}">
+    <meta name="meta_description" content="{{ $metaInformations['meta_description'] }}">
+    <meta name="meta_keywords" content="{{ $metaInformations['meta_keywords'] }}">
+  @else
+    <title>Search Result - {{ config('app.name', 'Tools.com.bd') }}</title>
+  @endif
+@endsection
 
 @section('content')
   <!-- container area Start -->

@@ -6,17 +6,17 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Canonical -->
     <link rel="canonical" href="{{url()->current()}}" />
+
+    <!-- Theme Color -->
     <meta name="theme-color" content="#C4161C">
+
     <!-- Meta Tags -->
-    @if(isset($headinfos))
-      @foreach($headinfos as $headinfo)
-        {!! $headinfo !!}
-      @endforeach
-      @else
-        <title>{{ config('app.name', 'Tools.com.bd') }}</title>
-    @endif
+    @yield('metaInformations')
+
+    <!-- Opengraph Tags -->
     <meta property="og:url" content="{{url()->current()}}">
     @if(isset($metaImage))
       <link rel="icon" href="{{ asset("/storage/$metaImage") }}">
@@ -25,7 +25,8 @@
     @else
       <link rel="icon" href="{{ asset('/storage/vendor/logo/favicon.png') }}">
     @endif
-    <!-- Static -->
+
+    <!-- Fixed Start -->
     <meta property="og:site_name" content="Tools.com.bd" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
@@ -38,11 +39,10 @@
     <meta name="twitter:site" content="@ToolBangladesh" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@ToolBangladesh" />
-    <!-- Static -->
+    <!-- Fixed End -->
+
     <!-- Schema Markup Start -->
-    @if(isset($schema))
-      {!!$schema!!}
-    @endif
+    @yield('schemaMarkup')
     <!-- Schema Markup End -->
 
     <!-- Fonts -->
@@ -55,37 +55,26 @@
     <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jams.css') }}" rel="stylesheet">
     @auth
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     @endauth
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 
-    <!-- Google Analytics Start -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121778152-3"></script>
-      <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-121778152-3');
-      </script>
-    <!-- Google Analytics End -->
+    <!-- Google Scripts Start -->
+      @include('frontend.includes.cdn.googleScripts')
+    <!-- Google Scripts End -->
 </head>
 <body>
+  {{-- @include('frontend.computer.layouts.parts.topbar') --}}
+  <!-- Navbar Start -->
+  @include('frontend.computer.layouts.parts.navbar')
+  <!-- Navbar End -->
     <div id="app">
-        {{-- @include('frontend.computer.layouts.parts.topbar') --}}
-        <!-- Navbar Start -->
-          @include('layouts.navbar')
-          <!-- Stcicky Navbar -->
-            <div id="stickyNavbar">
-              @include('layouts.navbar')
-            </div>
-        <!-- Navbar End -->
         <main>
             @yield('content')
         </main>
-        @include('layouts.footer')
+        @include('frontend.computer.layouts.parts.footer')
     </div>
-    @include('layouts.jsfiles')
-    @include('layouts.widgets')
+    @include('frontend.computer.layouts.parts.jsfiles')
+    @include('frontend.computer.layouts.parts.widgets')
 </body>
 </html>

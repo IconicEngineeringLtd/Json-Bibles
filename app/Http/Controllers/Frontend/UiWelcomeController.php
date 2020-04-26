@@ -36,16 +36,15 @@ class UiWelcomeController extends Controller
     $lps = Products::where('category_id', 12)->inRandomOrder()->select($reqData)->take(5)->get();
     $education = Products::where('category_id', 13)->inRandomOrder()->select($reqData)->take(5)->get();
 
-    // Head informations for seo start
-    $headinfos = array(
-      'title' => '<title>'.config('app.name').'</title>',
-      'meta_title' => '<meta name="title" content="'.config('app.name').'">',
-      // 'meta_description' => '<meta name="description" content="">',
-      // 'meta_keywords' => '<meta name="keyword" content="">',
-    );
-    // Head informations for seo end
+    // Head informations for SEO start
+    $metaInformations = [
+        'meta_title' => config('app.name'),
+        'meta_description' => config('app.name'),
+        'meta_keywords' => config('app.name'),
+    ];
+    // Head informations for SEO end
 
-    return view('frontend.welcome', compact('headinfos','sliders', 'categories', 'popularProducts', 'calibration', 'hvac', 'electrical', 'temperature', 'energy', 'mechanical', 'pharma', 'networking', 'transformer', 'insulation', 'fault', 'lps', 'education'));
+    return view('frontend.computer.pages.welcome', compact('metaInformations','sliders', 'categories', 'popularProducts', 'calibration', 'hvac', 'electrical', 'temperature', 'energy', 'mechanical', 'pharma', 'networking', 'transformer', 'insulation', 'fault', 'lps', 'education'));
   }
 
 }

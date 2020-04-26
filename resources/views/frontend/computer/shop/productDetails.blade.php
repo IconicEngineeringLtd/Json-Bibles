@@ -1,4 +1,22 @@
-@extends('layouts.app')
+@extends('frontend.computer.layouts.frame')
+
+@section('metaInformations')
+  @if(isset($metaInformations))
+    <title>{{ $product->title }} - {{ config('app.name') }}</title>
+    <meta name="meta_title" content="{{ $metaInformations['meta_title'] }}">
+    <meta name="meta_description" content="{{ $metaInformations['meta_description'] }}">
+    <meta name="meta_keywords" content="{{ $metaInformations['meta_keywords'] }}">
+    <meta name="title" content="{{ $metaInformations['meta_title'] }}">
+    <meta property="og:title" content="{{ $metaInformations['meta_title'] }}">
+    <meta name="twitter:title" content="{{ $metaInformations['meta_title'] }}">
+    <meta name="description" content="{{ $metaInformations['meta_description'] }}">
+    <meta property="og:description" content="{{ $metaInformations['meta_description'] }}">
+    <meta name="twitter:description" content="{{ $metaInformations['meta_description'] }}">
+    <meta name="keywords" content="{{ $metaInformations['meta_keywords'] }}">
+  @else
+    <title>Product details - {{ config('app.name', 'Tools.com.bd') }}</title>
+  @endif
+@endsection
 
 @section('content')
   <div class="container products singleProduct">
@@ -34,8 +52,8 @@
             <h1 class="h4">{{$product->title}}</h1>
             <p>Supplier: <strong>{{ucwords($product->store->name)}}</strong></p>
             <p>Brand: <a href="{{route('categoriesByBrand', $product->brand->url)}}" class="text-accent"><strong>{{ucwords($product->brand->name)}}</strong></a></p>
-            <p>Category: <a href="{{route('categoryProduct', $product->category->url)}}" class="text-accent"><strong>{{ucwords($product->category->name)}}</strong></a></p>
-            <p>Sub Category: <a href="{{route('subCategoryProduct', ['categoryUrl'=> $product->category->url, 'subCategoryUrl'=> $product->sub_category->url])}}" class="text-accent"><strong>{{ucwords($product->sub_category->name)}}</strong></a></p>
+            <p>Category: <a href="{{route('subCategoriesByBrandCategory', ['brandUrl' => $product->brand->url, 'categoryUrl' => $product->category->url])}}" class="text-accent"><strong>{{ucwords($product->category->name)}}</strong></a></p>
+            <p>Sub Category: <a href="{{route('productsByBrandCategorySubCategory', ['brandUrl' => $product->brand->url, 'categoryUrl' => $product->category->url, 'subCategoryUrl' => $product->sub_category->url])}}" class="text-accent"><strong>{{ucwords($product->sub_category->name)}}</strong></a></p>
             @if(count($product->inventory) != 0)
               <p class="d-block">In Stock: <strong class="text-accent">{{ $product->inventory->sum('quantity') }}</strong></p>
             @else

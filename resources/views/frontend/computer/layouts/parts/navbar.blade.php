@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           <h2 class="text-uppercase">{{ __('Tools') }}</h2>
@@ -16,7 +16,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <form class="form" action="{{ route('searchProducts') }}" method="GET">
+                <form class="form" action="{{ route('searchResult') }}" method="GET">
                   <div class="input-group navbarSearch">
                     <input type="text" class="form-control" name="keyword" placeholder="Search for Tools" aria-label="Search for Tools" aria-describedby="search">
                     <div class="input-group-append">
