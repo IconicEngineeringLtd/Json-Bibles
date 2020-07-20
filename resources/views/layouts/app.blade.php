@@ -72,7 +72,7 @@
 </head>
 <body>
     <div id="app">
-        {{-- @include('frontend.computer.layouts.parts.topbar') --}}
+        @include('layouts.topbar')
         <!-- Navbar Start -->
           @include('layouts.navbar')
           <!-- Stcicky Navbar -->
